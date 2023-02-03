@@ -23,7 +23,11 @@ public class ProyectoPaU3GcApplication implements CommandLineRunner{
 		// TODO Auto-generated method stub
 		
 //		System.out.println(this.iEstudianteService.buscarPorApellido("Conlago"));
-		System.out.println(this.iEstudianteService.buscarPorNombre("George"));
+		System.out.println("Busqueda 1 "+this.iEstudianteService.buscarPorNombre("Willian"));
+		System.out.println("Busqueda 2 "+this.iEstudianteService.buscarPoGenero("F"));
+		System.out.println("Busqueda 3 "+this.iEstudianteService.buscarPorApellido("Conlago"));
+		System.out.println("Busqueda 4 "+this.iEstudianteService.buscarPorCiudad("Cuenca"));
+		System.out.println("Busqueda 5 "+this.iEstudianteService.buscarPorCedula("1751242668"));
 
 	}
 
