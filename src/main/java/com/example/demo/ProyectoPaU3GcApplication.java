@@ -47,7 +47,7 @@ public class ProyectoPaU3GcApplication implements CommandLineRunner{
 //		System.out.println("Busqueda 5 "+this.iEstudianteService.buscarPorCedula("1751242668"));
 		
 //		Estudiante e=new Estudiante();
-//		e.setApellido("Conlago");
+//		e.setApellido("Morales");
 //		e.setCedula("17");
 //		e.setCiudad("Quito");
 //		e.setFechaNacimiento(LocalDateTime.now());
@@ -57,20 +57,24 @@ public class ProyectoPaU3GcApplication implements CommandLineRunner{
 //		e.setSalario(new BigDecimal(12));
 //		this.iEstudianteService.insertar(e);
 		
-		System.out.println(this.iEstudianteService.buscarPorApellido("Conlago"));
-		System.out.println("Siguiente"); 
-		System.out.println(this.iEstudianteService.buscarPorNombreTyped("George"));
-		System.out.println("Siguiente"); 
-		System.out.println(this.iEstudianteService.buscarPorNombreNamedQuery("George"));
-		System.out.println("Siguiente"); 
-		System.out.println(this.iEstudianteService.buscarPorNombreTyped("George"));
-		System.out.println("Siguiente"); 
-		System.out.println(this.iEstudianteService.buscarPorNombreNamedQueryTyped("George"));
-		System.out.println("Siguiente"); 
-		System.out.println(this.iEstudianteService.buscarPorNombreNativeQuery("George"));
-		System.out.println("Siguiente"); 
+//		System.out.println(this.iEstudianteService.buscarPorApellido("Conlago"));
+//		System.out.println("Siguiente"); 
+//		System.out.println(this.iEstudianteService.buscarPorNombreTyped("George"));
+//		System.out.println("Siguiente"); 
+//		System.out.println(this.iEstudianteService.buscarPorNombreNamedQuery("George"));
+//		System.out.println("Siguiente"); 
+//		System.out.println(this.iEstudianteService.buscarPorNombreTyped("George"));
+//		System.out.println("Siguiente"); 
+//		System.out.println(this.iEstudianteService.buscarPorNombreNamedQueryTyped("George"));
+//		System.out.println("Siguiente"); 
+//		System.out.println(this.iEstudianteService.buscarPorNombreNativeQuery("George"));
+//		System.out.println("Ultimo"); 
+//		
+//		System.out.println(this.iEstudianteService.buscarPorNombreNativeQueryTypedNamed("George"));
 		
-//		this.iEstudianteService.buscarPorNombreNativeQueryTypedNamed("George");
+		System.out.println(this.iEstudianteService.buscarPorNombreQueryList("George"));
+		
+		System.out.println(this.iEstudianteService.buscarPorNombreQueryFirst("George"));
 //		//Vehiculo
 //		Vehiculo vehiculo=new Vehiculo();
 //		vehiculo.setColor("rojo");

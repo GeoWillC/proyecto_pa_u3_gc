@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import com.example.demo.modelo.Estudiante;
 
 public interface IEstudianteService {
@@ -15,4 +17,10 @@ public interface IEstudianteService {
 	public Estudiante buscarPorNombreNamedQueryTyped(String nombre);
 	public Estudiante buscarPorNombreNativeQuery(String nombre);
 	public Estudiante buscarPorNombreNativeQueryTypedNamed(String nombre);
+	
+	//First
+	public Estudiante buscarPorNombreQueryFirst(String nombre);
+	
+	//Listas
+	public List<Estudiante> buscarPorNombreQueryList(String nombre);
 }
