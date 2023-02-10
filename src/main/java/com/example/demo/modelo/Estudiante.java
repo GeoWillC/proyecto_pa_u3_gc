@@ -22,15 +22,13 @@ import jakarta.persistence.Table;
 @NamedQueries({
 		@NamedQuery(name = "Estudiante.buscarPorNom", query = "select e from Estudiante e where e.nombre=:datoNombre"),
 		@NamedQuery(name = "Estudiante.buscarPorNom2", query = "select e from Estudiante e where e.nombre=:datoNombre"),
-		@NamedQuery(name = "Estudiante.buscarPorNom3", query = "select e from Estudiante e where e.nombre=:datoNombre") 
-		})
+		@NamedQuery(name = "Estudiante.buscarPorNom3", query = "select e from Estudiante e where e.nombre=:datoNombre") })
 
 //Permite poner un arreglo entre cada coma van los objetos
 @NamedNativeQueries({
 		@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative", query = "select * from estudiante where estu_nombre=:datoNombre", resultClass = Estudiante.class),
 		@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative1", query = "select * from estudiante where estu_nombre=:datoNombre", resultClass = Estudiante.class),
-		@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative2", query = "select * from estudiante where estu_nombre=:datoNombre", resultClass = Estudiante.class)
-		})
+		@NamedNativeQuery(name = "Estudiante.buscarPorNombreNative2", query = "select * from estudiante where estu_nombre=:datoNombre", resultClass = Estudiante.class) })
 
 public class Estudiante {
 

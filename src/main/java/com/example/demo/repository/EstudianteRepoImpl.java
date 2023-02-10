@@ -98,26 +98,28 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
 	public Estudiante buscarPorNombreNativeQuery(String nombre) {
 		// TODO Auto-generated method stub
 //		select * from estudiante where estu_nombre='Willian'
-		Query myQuery = this.entityManager.createNativeQuery("select * from estudiante where estu_nombre= :datoNombre",Estudiante.class);
+		Query myQuery = this.entityManager.createNativeQuery("select * from estudiante where estu_nombre= :datoNombre",
+				Estudiante.class);
 		myQuery.setParameter("datoNombre", nombre);
-		return (Estudiante)myQuery.getSingleResult();
+		return (Estudiante) myQuery.getSingleResult();
 	}
 
 	@Override
 	public Estudiante buscarPorNombreNativeQueryTypedNamed(String nombre) {
-		TypedQuery<Estudiante> myQuery = this.entityManager.createNamedQuery("Estudiante.buscarPorNombreNative",Estudiante.class);
+		TypedQuery<Estudiante> myQuery = this.entityManager.createNamedQuery("Estudiante.buscarPorNombreNative",
+				Estudiante.class);
 		myQuery.setParameter("datoNombre", nombre);
-		
+
 		return myQuery.getSingleResult(); // retorna typed mediante un named
 	}
 
 	@Override
 	public List<Estudiante> buscarPorNombreQueryList(String nombre) {
 		// select e from Estudiante e where e.nombre= :datoNombre
-				Query jplQuery = this.entityManager.createQuery("select e from Estudiante e where e.nombre = :datoNombre ");
-				jplQuery.setParameter("datoNombre", nombre); // Datos que voy a enlazar datoNombre ---> nombre
-				// Retorna tipos de objetos generico por lo que se debe castear a estudiante
-				return jplQuery.getResultList();
+		Query jplQuery = this.entityManager.createQuery("select e from Estudiante e where e.nombre = :datoNombre ");
+		jplQuery.setParameter("datoNombre", nombre); // Datos que voy a enlazar datoNombre ---> nombre
+		// Retorna tipos de objetos generico por lo que se debe castear a estudiante
+		return jplQuery.getResultList();
 	}
 
 	@Override
@@ -142,11 +144,11 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
 
 	@Override
 	public EstudianteDTO buscarPorNombreTypedQueryDTO(String nombre) {
-		TypedQuery<EstudianteDTO> myTypedQuery = this.entityManager
-				.createQuery("select NEW EstudianteDTO(e.nombre,e.apellido,e.cedula) from Estudiante e where e.nombre = :datoNombre ", EstudianteDTO.class);
+		TypedQuery<EstudianteDTO> myTypedQuery = this.entityManager.createQuery(
+				"select NEW EstudianteDTO(e.nombre,e.apellido,e.cedula) from Estudiante e where e.nombre = :datoNombre ",
+				EstudianteDTO.class);
 		myTypedQuery.setParameter("datoNombre", nombre);
 		return myTypedQuery.getSingleResult();
 	}
-
 
 }

@@ -8,10 +8,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.modelo.Automovil;
 import com.example.demo.modelo.Cliente;
 import com.example.demo.modelo.Estudiante;
 import com.example.demo.modelo.Vehiculo;
 import com.example.demo.repository.IEstudianteRepo;
+import com.example.demo.service.IAutomovilService;
 import com.example.demo.service.IClienteService;
 import com.example.demo.service.IEstudianteService;
 import com.example.demo.service.IRentaService;
@@ -28,7 +30,9 @@ public class ProyectoPaU3GcApplication implements CommandLineRunner{
 	private IClienteService iClienteService;
 	@Autowired
 	private IRentaService iRentaService;
-
+	
+	@Autowired
+	private IAutomovilService iAutomovilService;
 		
 	
 	public static void main(String[] args) {
@@ -38,60 +42,64 @@ public class ProyectoPaU3GcApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		
-//		System.out.println(this.iEstudianteService.buscarPorApellido("Conlago"));
-//		System.out.println("Busqueda 1 "+this.iEstudianteService.buscarPorNombre("George"));
-//		System.out.println("Busqueda 2 "+this.iEstudianteService.buscarPoGenero("F"));
-//		System.out.println("Busqueda 3 "+this.iEstudianteService.buscarPorApellido("Conlago"));
-//		System.out.println("Busqueda 4 "+this.iEstudianteService.buscarPorCiudad("Cuenca"));
-//		System.out.println("Busqueda 5 "+this.iEstudianteService.buscarPorCedula("1751242668"));
-		
-//		Estudiante e=new Estudiante();
-//		e.setApellido("Morales");
-//		e.setCedula("17");
-//		e.setCiudad("Quito");
-//		e.setFechaNacimiento(LocalDateTime.now());
-//		e.setGenero("M");
-//		e.setHobby("A");
-//		e.setNombre("George");
-//		e.setSalario(new BigDecimal(12));
-//		this.iEstudianteService.insertar(e);
-		
-//		System.out.println(this.iEstudianteService.buscarPorApellido("Conlago"));
-//		System.out.println("Siguiente"); 
-//		System.out.println(this.iEstudianteService.buscarPorNombreTyped("George"));
-//		System.out.println("Siguiente"); 
-//		System.out.println(this.iEstudianteService.buscarPorNombreNamedQuery("George"));
-//		System.out.println("Siguiente"); 
-//		System.out.println(this.iEstudianteService.buscarPorNombreTyped("George"));
-//		System.out.println("Siguiente"); 
-//		System.out.println(this.iEstudianteService.buscarPorNombreNamedQueryTyped("George"));
-//		System.out.println("Siguiente"); 
-//		System.out.println(this.iEstudianteService.buscarPorNombreNativeQuery("George"));
-//		System.out.println("Ultimo"); 
+		//Automoviles
+//		Automovil automovil1=new Automovil();
+//		automovil1.setColor("Amarillo");
+//		automovil1.setDisponibilidad(true);
+//		automovil1.setMarca("Toyota");
+//		automovil1.setNumeroSerie("1G1RC6E42B");
+//		automovil1.setPlaca("ABC-123");
+//		automovil1.setPrecio(new BigDecimal(15000));
+//		automovil1.setTransmicion("A");
 //		
-//		System.out.println(this.iEstudianteService.buscarPorNombreNativeQueryTypedNamed("George"));
-		
-		System.out.println(this.iEstudianteService.buscarPorNombreQueryList("George"));
-		
-		System.out.println(this.iEstudianteService.buscarPorNombreQueryFirst("George"));
-//		//Vehiculo
-//		Vehiculo vehiculo=new Vehiculo();
-//		vehiculo.setColor("rojo");
-//		vehiculo.setMarca("Toyota");
-//		vehiculo.setPlaca("ACC-0123");
-//		vehiculo.setPrecioDia(new BigDecimal(50));
+//		Automovil automovil2=new Automovil();
+//		automovil2.setColor("Azul");
+//		automovil2.setDisponibilidad(true);
+//		automovil2.setMarca("Chevrolet");
+//		automovil2.setNumeroSerie("1G1RC6E42C");
+//		automovil2.setPlaca("ABC-124");
+//		automovil2.setPrecio(new BigDecimal(16000));
+//		automovil2.setTransmicion("M");
 //		
-//		Cliente cliente=new Cliente();
-//		cliente.setApellido("Conlago");
-//		cliente.setCedula("1751242668");
-//		cliente.setDiasRenta(new BigDecimal(12));
-//		cliente.setNombre("Willian");
-//		cliente.setTarjetaCredito("5540500001000004");
-//	
-//		this.iClienteService.agregar(cliente);
-//		this.iVehiculoService.agregar(vehiculo);
-//		this.iRentaService.rentar(cliente.getCedula(), vehiculo.getPlaca());
+//		Automovil automovil3=new Automovil();
+//		automovil3.setColor("Rojo");
+//		automovil3.setDisponibilidad(false);
+//		automovil3.setMarca("Hyundai");
+//		automovil3.setNumeroSerie("1G1RC6E42D");
+//		automovil3.setPlaca("ABC-125");
+//		automovil3.setPrecio(new BigDecimal(17000));
+//		automovil3.setTransmicion("M");
+//		
+//		
+//		this.iAutomovilService.insertar(automovil1);
+//		this.iAutomovilService.insertar(automovil2);
+//		this.iAutomovilService.insertar(automovil3);
+		
+		//Placa
+		//1
+		System.out.println("Consulta 1 "+this.iAutomovilService.buscarPorPlacaTypedQuery("ABC-123"));
+		//2
+		System.out.println("Consulta 2 "+this.iAutomovilService.buscarPorPlacaNativeQuery("ABC-124"));
+		//3
+		System.out.println("Consulta 3 "+this.iAutomovilService.buscarPorPlacaNamedQuery("ABC-125"));
+		//4
+		System.out.println("Consulta 4 "+this.iAutomovilService.buscarPorPlacaNamedNativeQuery("ABC-123"));
+		//Marca
+		System.out.println("Consulta 5 "+this.iAutomovilService.buscarPorMarcaTypedQuery("Hyundai"));
+		//2
+		System.out.println("Consulta 6 "+this.iAutomovilService.buscarPorMarcaNativeQuery("Chevrolet"));
+		//3
+		System.out.println("Consulta 7 "+this.iAutomovilService.buscarPorMarcaNamedQuery("Toyota"));
+		//4
+		System.out.println("Consulta 8 "+this.iAutomovilService.buscarPorMarcaNamedNativeQuery("Hyundai"));
+		//Color
+		System.out.println("Consulta 9 "+this.iAutomovilService.buscarPorColorTypedQuery("Amarillo"));
+		//2
+		System.out.println("Consulta 10 "+this.iAutomovilService.buscarPorColorNativeQuery("Rojo"));
+		//3
+		System.out.println("Consulta 11 "+this.iAutomovilService.buscarPorColorNamedQuery("Azul"));
+		//4
+		System.out.println("Consulta 12 "+this.iAutomovilService.buscarPorColorNamedNativeQuery("Rojo"));
 		
 	}
 
