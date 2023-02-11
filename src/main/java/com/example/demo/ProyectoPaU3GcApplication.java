@@ -41,6 +41,17 @@ public class ProyectoPaU3GcApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+//		Estudiante nuevo=new Estudiante();
+//		nuevo.setApellido("Padilla");
+//		nuevo.setCedula("12312312313");
+//		nuevo.setCiudad("Cuenca");
+//		nuevo.setFechaNacimiento(LocalDateTime.now());
+//		nuevo.setGenero("F");
+//		nuevo.setHobby("nada");
+//		nuevo.setNombre("Maria");
+//		nuevo.setPais("Ecuador");
+//		nuevo.setSalario(new BigDecimal(100));
+//		this.iEstudianteService.insertar(nuevo);
 		// TODO Auto-generated method stub
 		//Automoviles
 //		Automovil automovil1=new Automovil();
@@ -77,30 +88,36 @@ public class ProyectoPaU3GcApplication implements CommandLineRunner{
 		
 		//Placa
 		//1
-		System.out.println("Consulta 1 "+this.iAutomovilService.buscarPorPlacaTypedQuery("ABC-123"));
-		//2
-		System.out.println("Consulta 2 "+this.iAutomovilService.buscarPorPlacaNativeQuery("ABC-124"));
-		//3
-		System.out.println("Consulta 3 "+this.iAutomovilService.buscarPorPlacaNamedQuery("ABC-125"));
-		//4
-		System.out.println("Consulta 4 "+this.iAutomovilService.buscarPorPlacaNamedNativeQuery("ABC-123"));
-		//Marca
-		System.out.println("Consulta 5 "+this.iAutomovilService.buscarPorMarcaTypedQuery("Hyundai"));
-		//2
-		System.out.println("Consulta 6 "+this.iAutomovilService.buscarPorMarcaNativeQuery("Chevrolet"));
-		//3
-		System.out.println("Consulta 7 "+this.iAutomovilService.buscarPorMarcaNamedQuery("Toyota"));
-		//4
-		System.out.println("Consulta 8 "+this.iAutomovilService.buscarPorMarcaNamedNativeQuery("Hyundai"));
-		//Color
-		System.out.println("Consulta 9 "+this.iAutomovilService.buscarPorColorTypedQuery("Amarillo"));
-		//2
-		System.out.println("Consulta 10 "+this.iAutomovilService.buscarPorColorNativeQuery("Rojo"));
-		//3
-		System.out.println("Consulta 11 "+this.iAutomovilService.buscarPorColorNamedQuery("Azul"));
-		//4
-		System.out.println("Consulta 12 "+this.iAutomovilService.buscarPorColorNamedNativeQuery("Rojo"));
+//		System.out.println("Consulta 1 "+this.iAutomovilService.buscarPorPlacaTypedQuery("ABC-123"));
+//		//2
+//		System.out.println("Consulta 2 "+this.iAutomovilService.buscarPorPlacaNativeQuery("ABC-124"));
+//		//3
+//		System.out.println("Consulta 3 "+this.iAutomovilService.buscarPorPlacaNamedQuery("ABC-125"));
+//		//4
+//		System.out.println("Consulta 4 "+this.iAutomovilService.buscarPorPlacaNamedNativeQuery("ABC-123"));
+//		//Marca
+//		System.out.println("Consulta 5 "+this.iAutomovilService.buscarPorMarcaTypedQuery("Hyundai"));
+//		//2
+//		System.out.println("Consulta 6 "+this.iAutomovilService.buscarPorMarcaNativeQuery("Chevrolet"));
+//		//3
+//		System.out.println("Consulta 7 "+this.iAutomovilService.buscarPorMarcaNamedQuery("Toyota"));
+//		//4
+//		System.out.println("Consulta 8 "+this.iAutomovilService.buscarPorMarcaNamedNativeQuery("Hyundai"));
+//		//Color
+//		System.out.println("Consulta 9 "+this.iAutomovilService.buscarPorColorTypedQuery("Amarillo"));
+//		//2
+//		System.out.println("Consulta 10 "+this.iAutomovilService.buscarPorColorNativeQuery("Rojo"));
+//		//3
+//		System.out.println("Consulta 11 "+this.iAutomovilService.buscarPorColorNamedQuery("Azul"));
+//		//4
+//		System.out.println("Consulta 12 "+this.iAutomovilService.buscarPorColorNamedNativeQuery("Rojo"));
 		
+		//  10/2/2023
+		
+//		System.out.println(this.iEstudianteService.buscarPorNombreTypedQueryDTO("George"));
+//		System.out.println(this.iEstudianteService.buscaPorNombreCriteria("George"));
+		System.out.println(this.iEstudianteService.buscaPorNombreCriteriaAndOr("George","Conlago","M"));
+		System.out.println(this.iEstudianteService.buscaPorNombreCriteriaAndOr("Maria","Padilla","F"));
 	}
 
 }

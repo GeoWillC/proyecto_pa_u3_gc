@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.List;
 
 import com.example.demo.modelo.Estudiante;
+import com.example.demo.modelo.dto.EstudianteDTO;
 
 public interface IEstudianteService {
 	
@@ -23,4 +24,13 @@ public interface IEstudianteService {
 	
 	//Listas
 	public List<Estudiante> buscarPorNombreQueryList(String nombre);
+	
+	//Estudiante simple
+	public EstudianteDTO buscarPorNombreTypedQueryDTO(String nombre);
+
+	//Criteria Api query
+	public Estudiante buscaPorNombreCriteria(String nombre);
+	
+	public List<Estudiante> buscaPorNombreCriteriaAndOr(String nombre,String apellido,String bandera);
+	
 }

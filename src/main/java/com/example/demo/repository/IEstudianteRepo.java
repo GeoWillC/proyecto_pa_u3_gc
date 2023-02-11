@@ -39,7 +39,13 @@ public List <Estudiante> buscarPorNombreNamedQueryList(String nombre);
 
 public List <Estudiante> buscarPorNombreNativeQueryTypedNamedList(String nombre);
 
+//Reduccion de dimensionalidad
 public EstudianteDTO buscarPorNombreTypedQueryDTO(String nombre);
+
+//Querys dinamicos
+public Estudiante buscaPorNombreCriteria(String nombre);
+
+public List<Estudiante> buscaPorNombreCriteriaAndOr(String nombre,String apellido,String bandera);
 
 
 }
