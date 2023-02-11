@@ -33,4 +33,8 @@ public interface IEstudianteService {
 	
 	public List<Estudiante> buscaPorNombreCriteriaAndOr(String nombre,String apellido,String bandera);
 	
+	public int eliminarPorApellido(String apellido);
+	
+	public int actualizarPorApellido(String apellido,String nombre);
+	
 }

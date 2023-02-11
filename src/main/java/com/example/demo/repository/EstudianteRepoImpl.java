@@ -157,58 +157,70 @@ public class EstudianteRepoImpl implements IEstudianteRepo {
 
 	@Override
 	public Estudiante buscaPorNombreCriteria(String nombre) {
-		CriteriaBuilder myBuilder=this.entityManager.getCriteriaBuilder();
-		//Especificamos el tipo de retorno de mi query
-		CriteriaQuery<Estudiante> myQuery=myBuilder.createQuery(Estudiante.class);
-		//Empieza la creacion de SQL en base a metodos
-		//Se define la tabla destino, from ----- sera tomado la ruta principal root 
-		Root<Estudiante> myTablaRoot= myQuery.from(Estudiante.class);
+		CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
+		// Especificamos el tipo de retorno de mi query
+		CriteriaQuery<Estudiante> myQuery = myBuilder.createQuery(Estudiante.class);
+		// Empieza la creacion de SQL en base a metodos
+		// Se define la tabla destino, from ----- sera tomado la ruta principal root
+		Root<Estudiante> myTablaRoot = myQuery.from(Estudiante.class);
 //		Las condiciones where se conocen en criteria PAI query como predicados
-		//equal(la columna que voy a comprar,)
+		// equal(la columna que voy a comprar,)
 //		e.nombre = :datoNombre
 //		myTablaRoot.nombre=:datoNombre
-		Predicate condicion1= myBuilder.equal(myTablaRoot.get("nombre"),nombre);
+		Predicate condicion1 = myBuilder.equal(myTablaRoot.get("nombre"), nombre);
 		myQuery.select(myTablaRoot).where(condicion1);
 //		Fin SQL, falta ejecucion
 //		Se ejecuta mediante con cualquier tipo ya conocido, remendacion typedquery
-		TypedQuery<Estudiante> mySQL=this.entityManager.createQuery(myQuery);
-		
-		
+		TypedQuery<Estudiante> mySQL = this.entityManager.createQuery(myQuery);
+
 		return mySQL.getResultList().get(0);
 	}
 
 	@Override
-	public List<Estudiante> buscaPorNombreCriteriaAndOr(String nombre,String apellido,String genero) {
-		CriteriaBuilder myBuilder=this.entityManager.getCriteriaBuilder();
-		CriteriaQuery<Estudiante> myQuery=myBuilder.createQuery(Estudiante.class);
-		Root<Estudiante> myTablaRoot= myQuery.from(Estudiante.class);
-		Predicate condicion1=myBuilder.equal(myTablaRoot.get("nombre"), nombre);
-		Predicate condicion2=myBuilder.equal(myTablaRoot.get("apellido"), apellido);
+	public List<Estudiante> buscaPorNombreCriteriaAndOr(String nombre, String apellido, String genero) {
+		CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
+		CriteriaQuery<Estudiante> myQuery = myBuilder.createQuery(Estudiante.class);
+		Root<Estudiante> myTablaRoot = myQuery.from(Estudiante.class);
+		Predicate condicion1 = myBuilder.equal(myTablaRoot.get("nombre"), nombre);
+		Predicate condicion2 = myBuilder.equal(myTablaRoot.get("apellido"), apellido);
 //		Genero		
 //		M: e.nombre= AND e.apellido=
 //		F: e.nombre= OR e.apellido=		
-		Predicate predicadoFinal=null;
-		
-		if(genero.equals("M")) {
+		Predicate predicadoFinal = null;
+		if (genero.equals("M")) {
 //			Predicado AND
-			predicadoFinal=myBuilder.and(condicion1,condicion2);			
-		}else {
+			predicadoFinal = myBuilder.and(condicion1, condicion2);
+		} else {
 //			Predicado OR
-			predicadoFinal=myBuilder.or(condicion1,condicion2);			
+			predicadoFinal = myBuilder.or(condicion1, condicion2);
 		}
-		//Ejecucion
+		// Ejecucion
 		myQuery.select(myTablaRoot).where(predicadoFinal);
-		
-		TypedQuery<Estudiante> mySQL= this.entityManager.createQuery(myQuery);
-
-				
+		TypedQuery<Estudiante> mySQL = this.entityManager.createQuery(myQuery);
 		return mySQL.getResultList();
 	}
+
+	@Override
+	public int eliminarPorApellido(String apellido) {
+		// TODO Auto-generated method stub
+		// Para la eliminacion y actualizacion query
+//		JPQL: delete from estudiante where estu_apellido="Conlago"
+		Query myQuery = this.entityManager.createQuery("delete from Estudiante e where e.apellido=:datoEntrada");
+		myQuery.setParameter("datoEntrada", apellido);
+
+		return myQuery.executeUpdate();
+	}
+
+	@Override
+	public int actualizarPorApellido(String apellido, String nombre) {
+		// TODO Auto-generated method stub
+//		JPQL: update estudiante set estu_nombre=''Edison where estu_apellido="Conlago"
+		Query myQuery = this.entityManager
+				.createQuery("update Estudiante e set e.nombre=:datoNombre where e.apellido =:datoApellido");
+		myQuery.setParameter("datoNombre", nombre);
+		myQuery.setParameter("datoApellido",apellido);
+		return myQuery.executeUpdate();
+	}
+	
 	
 }
-
-
-
-
-
-

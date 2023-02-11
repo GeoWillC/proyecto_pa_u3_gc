@@ -116,8 +116,11 @@ public class ProyectoPaU3GcApplication implements CommandLineRunner{
 		
 //		System.out.println(this.iEstudianteService.buscarPorNombreTypedQueryDTO("George"));
 //		System.out.println(this.iEstudianteService.buscaPorNombreCriteria("George"));
-		System.out.println(this.iEstudianteService.buscaPorNombreCriteriaAndOr("George","Conlago","M"));
-		System.out.println(this.iEstudianteService.buscaPorNombreCriteriaAndOr("Maria","Padilla","F"));
+//		System.out.println(this.iEstudianteService.buscaPorNombreCriteriaAndOr("George","Conlago","M"));
+//		System.out.println(this.iEstudianteService.buscaPorNombreCriteriaAndOr("Maria","Padilla","F"));
+//		System.out.println(this.iEstudianteService.actualizarPorApellido("Conlago","Willian"));
+//		System.out.println(this.iEstudianteService.eliminarPorApellido("Morales"));
+		
 	}
 
 }
