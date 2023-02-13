@@ -16,6 +16,7 @@ import com.example.demo.repository.IEstudianteRepo;
 import com.example.demo.service.IAutomovilService;
 import com.example.demo.service.IClienteService;
 import com.example.demo.service.IEstudianteService;
+import com.example.demo.service.IHotelService;
 import com.example.demo.service.IRentaService;
 import com.example.demo.service.IVehiculoService;
 
@@ -33,6 +34,9 @@ public class ProyectoPaU3GcApplication implements CommandLineRunner{
 	
 	@Autowired
 	private IAutomovilService iAutomovilService;
+	
+	@Autowired
+	private IHotelService iHotelService;
 		
 	
 	public static void main(String[] args) {
@@ -118,9 +122,12 @@ public class ProyectoPaU3GcApplication implements CommandLineRunner{
 //		System.out.println(this.iEstudianteService.buscaPorNombreCriteria("George"));
 //		System.out.println(this.iEstudianteService.buscaPorNombreCriteriaAndOr("George","Conlago","M"));
 //		System.out.println(this.iEstudianteService.buscaPorNombreCriteriaAndOr("Maria","Padilla","F"));
-//		System.out.println(this.iEstudianteService.actualizarPorApellido("Conlago","Willian"));
+		//Deber ej 1
+//		System.out.println(this.iEstudianteService.actualizarPorApellido("Conlago","Jorge"));
 //		System.out.println(this.iEstudianteService.eliminarPorApellido("Morales"));
-		
+		//Deber ej 2
+		System.out.println(this.iHotelService.actualizarPorNombre("Hilton", "Av. 6 de Diciembre"));
+		System.out.println(this.iHotelService.eliminarPorNombre("Palmeras"));
 	}
 
 }
