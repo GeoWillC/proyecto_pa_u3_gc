@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,6 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.demo.modelo.Automovil;
 import com.example.demo.modelo.Cliente;
 import com.example.demo.modelo.Estudiante;
+import com.example.demo.modelo.Habitacion;
+import com.example.demo.modelo.Hotel;
 import com.example.demo.modelo.Vehiculo;
 import com.example.demo.repository.IEstudianteRepo;
 import com.example.demo.service.IAutomovilService;
@@ -126,8 +129,46 @@ public class ProyectoPaU3GcApplication implements CommandLineRunner{
 //		System.out.println(this.iEstudianteService.actualizarPorApellido("Conlago","Jorge"));
 //		System.out.println(this.iEstudianteService.eliminarPorApellido("Morales"));
 		//Deber ej 2
-		System.out.println(this.iHotelService.actualizarPorNombre("Hilton", "Av. 6 de Diciembre"));
-		System.out.println(this.iHotelService.eliminarPorNombre("Palmeras"));
+//		System.out.println(this.iHotelService.actualizarPorNombre("Hilton", "Av. 6 de Diciembre"));
+//		System.out.println(this.iHotelService.eliminarPorNombre("Palmeras"));
+
+		//13/2/2023
+		List<Hotel> lista=this.iHotelService.buscarHotelInnerJoin("VIP");
+		for (Hotel hotel : lista) {
+			System.out.println(hotel.getNombre());
+			for (Habitacion ha : hotel.getHabitacion()) {
+				System.out.println("La habitaciones de "+hotel.getNombre()+" son " +ha );
+			}
+		System.out.println();
+		}	
+//		
+//		System.out.println("LEFT JOIN");
+//		
+//		List<Hotel> lista2=this.iHotelService.buscarHotelLeftJoin("VIP");
+//
+//		for (Hotel hotel : lista2) {
+//			System.out.println(hotel.getNombre());
+//			for (Habitacion ha : hotel.getHabitacion()) {
+//				System.out.println("La habitaciones de "+hotel.getNombre()+" son " +ha );
+//			}
+//		System.out.println();
+//		}	
+		
+//		System.out.println("Right JOIN");
+//		List<Hotel> lista3=this.iHotelService.buscarHotelRightJoin("VIP");
+//
+//		for (Hotel hotel : lista3) {
+//			System.out.println(hotel.getNombre());
+//			for (Habitacion ha : hotel.getHabitacion()) {
+//				System.out.println("La habitaciones de "+hotel.getNombre()+" son " +ha );
+//			}
+//		System.out.println();
+//		}	
+//		System.out.println(this.iHotelService.buscarHotelLeftJoin("NOVIP"));
+//		System.out.println(this.iHotelService.buscarHotelRightJoin("VIP"));
+//		System.out.println(this.iHotelService.buscarHotelFullJoin("NOVIP"));
+//		System.out.println(this.iHotelService.buscarHotelFetchJoin("VIP"));
+		
 	}
 
 }

@@ -25,7 +25,7 @@ public class Habitacion {
 	@Column(name="habi_tipo")
 	private String tipo;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="habi_id_hotel")
 	private Hotel hotel;
 	
@@ -50,10 +50,6 @@ public class Habitacion {
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
-	@Override
-	public String toString() {
-		return "Habitacion [id=" + id + ", numero=" + numero + "]";
-	}
 
 	public String getTipo() {
 		return tipo;
@@ -61,6 +57,11 @@ public class Habitacion {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	@Override
+	public String toString() {
+		return "Habitacion [id=" + id + ", numero=" + numero + ", tipo=" + tipo + "]";
 	}
 	
 }

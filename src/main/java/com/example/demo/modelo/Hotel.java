@@ -27,7 +27,7 @@ public class Hotel {
 	
 	@Column(name="hote_direccion")
 	private String direccion;
-	
+	//EAGER NO ES EFICIENTE
 	@OneToMany(mappedBy = "hotel",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Habitacion> habitacion;
 	
