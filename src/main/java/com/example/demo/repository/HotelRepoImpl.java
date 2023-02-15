@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -65,6 +66,10 @@ public class HotelRepoImpl implements IHotelRepo {
 			hotel.setHabitacion(listTemp);
 			
 		}
+		
+//		for(Hotel h: listaHoteles) {
+//			h.getHabitacion().size();
+//		}
 		return listaHoteles;
 	}
 
@@ -97,11 +102,8 @@ public class HotelRepoImpl implements IHotelRepo {
 		myQuery.setParameter("datoTipo", tipoHabitacion);
 		
 		//Bajo demanda
-		List<Hotel> listaHoteles=myQuery.getResultList();
-		for (Hotel hotel : listaHoteles) {
-			hotel.getHabitacion().size();
-		}
-		return listaHoteles;
+	
+		return myQuery.getResultList();
 	}
 
 	@Override
@@ -112,6 +114,34 @@ public class HotelRepoImpl implements IHotelRepo {
 
 	@Override
 	public List<Hotel> buscarHotelFetchJoin(String tipoHabitacion) {
+		Query myQuery = this.entityManager.createQuery(
+				"select h from Hotel h join fetch h.habitacion ha where ha.tipo=:datoTipo", Hotel.class);
+		myQuery.setParameter("datoTipo", tipoHabitacion);
+		
+
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Hotel> buscarHotelLeftJoin() {
+		Query myQuery = this.entityManager.createQuery(
+				"select h from Hotel h left join h.habitacion ha", Hotel.class);
+		List<Hotel> listHotel=myQuery.getResultList();
+		for (Hotel h : listHotel) {
+			h.getHabitacion().size();
+		}
+		return listHotel;
+	}
+
+	@Override
+	public List<Hotel> buscarHotelRightJoin() {
+		Query myQuery = this.entityManager.createQuery(
+				"select h from Hotel h right join h.habitacion ha", Hotel.class);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Hotel> buscarHotelFullJoin() {
 		// TODO Auto-generated method stub
 		return null;
 	}

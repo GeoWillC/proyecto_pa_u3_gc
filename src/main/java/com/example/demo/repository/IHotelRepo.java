@@ -15,8 +15,10 @@ public interface IHotelRepo {
 	
 	public List<Hotel> buscarHotelFetchJoin(String tipoHabitacion);
 	
-
 	public int eliminarPorNombre(String nombre);
-	
 	public int actualizarPorNombre(String nombre, String direccion);
+	
+	public List<Hotel> buscarHotelLeftJoin();
+	public List<Hotel> buscarHotelRightJoin();
+	public List<Hotel> buscarHotelFullJoin();
 }
